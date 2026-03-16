@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "node --watch index.js",
-    "init-db": "node scripts/init-db.js"
+    "init-db": "node -e \"require('dotenv').config(); const { exec } = require('child_process'); const cmd = process.env.DATABASE_URL ? 'psql ' + process.env.DATABASE_URL + ' -f db/init-db.sql' : 'echo Configure DATABASE_URL'; exec(cmd, (e,o,er) => { console.log(o||er); process.exit(e?1:0); });\""
   },
   "dependencies": {
     "cors": "^2.8.5",
