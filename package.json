@@ -1,0 +1,18 @@
+{
+  "name": "farmago-backend",
+  "version": "1.0.0",
+  "description": "Backend FarmaGo - Trazabilidad con blockchain",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "init-db": "node -e \"require('dotenv').config(); const { exec } = require('child_process'); const cmd = process.env.DATABASE_URL ? 'psql ' + process.env.DATABASE_URL + ' -f db/init-db.sql' : 'echo Configure DATABASE_URL'; exec(cmd, (e,o,er) => { console.log(o||er); process.exit(e?1:0); });\""
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "pg": "^8.11.3"
+  }
+}
